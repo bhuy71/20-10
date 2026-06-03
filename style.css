@@ -1,0 +1,533 @@
+/* ============================ RESET & BASE ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff7eb3;
+  --pink-soft: #ffd1e3;
+  --pink-deep: #ff4f8b;
+  --cream: #fff5fa;
+  --text: #6b3a5b;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Quicksand", sans-serif;
+  color: var(--text);
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #ffe5f1 0%, #ffd1e3 50%, #ffc2dd 100%);
+  position: relative;
+}
+
+/* ============================ SCENES ============================ */
+.scene {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.98);
+  transition: opacity 0.7s ease, transform 0.7s ease, visibility 0.7s;
+  z-index: 1;
+}
+
+.scene.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.scene-inner {
+  text-align: center;
+  max-width: 620px;
+  width: 100%;
+  animation: floatUp 0.9s ease;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================ MÀN MỞ ĐẦU (TẶNG NÈ) ============================ */
+.scene-intro {
+  background: linear-gradient(160deg, #fff7fb 0%, #ffeef6 60%, #ffe3f0 100%);
+}
+
+.intro-title {
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 9vw, 4.4rem);
+  color: var(--pink-deep);
+  margin-bottom: 26px;
+  text-shadow: 2px 2px 0 #fff;
+  animation: bob 2.6s ease-in-out infinite;
+}
+
+.gift-card {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  padding: 14px;
+  border-radius: 26px;
+  box-shadow: 0 0 0 6px rgba(255, 126, 179, 0.18), 0 18px 40px rgba(255, 79, 139, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: giftPulse 1.8s ease-in-out infinite;
+}
+.gift-card:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 0 0 8px rgba(255, 126, 179, 0.28), 0 22px 50px rgba(255, 79, 139, 0.4);
+}
+.gift-card:active { transform: scale(0.97); }
+
+@keyframes giftPulse {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(255, 126, 179, 0.18), 0 18px 40px rgba(255, 79, 139, 0.28); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 126, 179, 0.32), 0 18px 46px rgba(255, 79, 139, 0.45); }
+}
+
+.gift-card-inner {
+  width: clamp(180px, 52vw, 240px);
+  height: clamp(180px, 52vw, 240px);
+  border-radius: 18px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.gift-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.gift-bunny {
+  width: 86%;
+  height: 86%;
+}
+
+.intro-hint {
+  margin-top: 20px;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--pink-deep);
+  font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* ============================ TYPOGRAPHY ============================ */
+.title-script {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  color: var(--pink-deep);
+  text-shadow: 2px 2px 0 #fff, 4px 4px 8px rgba(255, 79, 139, 0.25);
+  margin-bottom: 18px;
+}
+
+.msg {
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight: 600;
+  margin: 14px 0;
+  line-height: 1.6;
+}
+
+.msg-2 {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.cute-char {
+  font-size: clamp(4rem, 16vw, 7rem);
+  margin-bottom: 10px;
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-14px) rotate(3deg); }
+}
+
+/* ============================ CUTE BUTTON ============================ */
+.cute-btn {
+  margin-top: 26px;
+  border: none;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 3.4vw, 1.2rem);
+  color: #fff;
+  padding: 16px 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
+  box-shadow: 0 8px 20px rgba(255, 79, 139, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: btnGlow 2.2s ease-in-out infinite;
+}
+
+.cute-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(255, 79, 139, 0.6);
+}
+
+.cute-btn:active {
+  transform: scale(0.96);
+}
+
+@keyframes btnGlow {
+  0%, 100% { box-shadow: 0 8px 20px rgba(255, 79, 139, 0.45); }
+  50% { box-shadow: 0 8px 30px rgba(255, 79, 139, 0.8); }
+}
+
+/* ============================ 2 NÚT LỰA CHỌN (CẢNH 3) ============================ */
+.choice-wrap {
+  margin-top: 26px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.choice-wrap .cute-btn { margin-top: 0; }
+
+/* Nút "Ko" sẽ nhảy đi khi rê/bấm vào */
+.choice-no {
+  background: linear-gradient(135deg, #b9b9c9 0%, #8a8a9c 100%);
+  box-shadow: 0 8px 20px rgba(120, 120, 140, 0.4);
+  animation: none;
+}
+.choice-no.runaway {
+  position: fixed;
+  z-index: 30;
+  margin: 0;
+  transition: top 0.18s ease, left 0.18s ease;
+}
+
+/* ============================ BẢN KIỂM ĐIỂM ============================ */
+.paper {
+  position: relative;
+  background: repeating-linear-gradient(
+    var(--cream),
+    var(--cream) 31px,
+    #ffe0ee 32px
+  );
+  border: 3px dashed var(--pink);
+  border-radius: 18px;
+  padding: 38px 28px 30px;
+  text-align: left;
+  box-shadow: 0 16px 40px rgba(255, 79, 139, 0.3);
+  max-height: 70vh;
+  overflow-y: auto;
+  animation: paperPop 0.7s cubic-bezier(0.2, 1.2, 0.4, 1);
+}
+
+@keyframes paperPop {
+  from { transform: scale(0.6) rotate(-6deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.paper-tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 120px;
+  height: 28px;
+  background: rgba(255, 126, 179, 0.5);
+  border-radius: 4px;
+}
+
+.paper-deco {
+  position: absolute;
+  font-size: 1.8rem;
+}
+.deco-tl { top: 8px; left: 10px; }
+.deco-tr { top: 8px; right: 10px; }
+.deco-bl { bottom: 8px; left: 10px; }
+.deco-br { bottom: 8px; right: 10px; }
+
+.paper-national {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.paper-national-name {
+  font-weight: 700;
+  color: var(--text);
+  font-size: clamp(0.92rem, 3vw, 1.08rem);
+  line-height: 1.4;
+}
+.paper-national-motto {
+  font-weight: 600;
+  color: var(--text);
+  font-size: clamp(0.85rem, 2.7vw, 1rem);
+  margin-top: 2px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.paper-title {
+  text-align: center;
+  color: var(--pink-deep);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  margin-bottom: 6px;
+}
+
+.paper-sub {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.paper-body p {
+  margin: 12px 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.paper-body ul {
+  list-style: none;
+  margin: 12px 0;
+}
+
+.paper-body li {
+  margin: 10px 0;
+  font-size: 1.02rem;
+}
+
+.paper-sign {
+  text-align: right;
+  margin-top: 18px;
+  font-weight: 600;
+}
+.paper-sign span {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.5rem;
+  color: var(--pink-deep);
+}
+
+/* ============================ TIM BAY ============================ */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+  transition: opacity 0.35s ease;
+}
+
+body.space-mode .floating-hearts {
+  opacity: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  font-size: 22px;
+  animation: rise linear forwards;
+  opacity: 0.85;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ============================ CẢNH VŨ TRỤ 3D ============================ */
+.scene-space {
+  background: radial-gradient(ellipse at center, #080516 0%, #02010a 48%, #000006 100%);
+  padding: 0;
+  overflow: hidden;
+}
+
+.scene-space::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 0%, transparent 45%, rgba(0, 0, 0, 0.42) 100%),
+    linear-gradient(180deg, rgba(4, 2, 18, 0.35), transparent 28%, rgba(0, 0, 0, 0.4));
+}
+
+/* Canvas Three.js phủ kín màn hình */
+.galaxy-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: grab;
+  touch-action: none; /* để cử chỉ kéo/chụm điều khiển 3D, không cuộn/zoom cả trang */
+}
+.galaxy-canvas:active { cursor: grabbing; }
+.galaxy-canvas canvas { display: block; }
+
+.space-caption {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-size: clamp(1.55rem, 5vw, 2.65rem);
+  color: #fff2f8;
+  text-shadow:
+    0 0 10px rgba(255, 164, 202, 0.95),
+    0 0 26px rgba(255, 87, 145, 0.65);
+  z-index: 6;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.heart-beat {
+  display: inline-block;
+  animation: beat 1.2s ease-in-out infinite;
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.space-hint {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: clamp(0.75rem, 2.6vw, 0.95rem);
+  z-index: 6;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.space-btn {
+  position: absolute;
+  bottom: 80px;
+  right: 18px;
+  z-index: 6;
+  margin: 0;
+  padding: 11px 18px;
+  font-size: 0.92rem;
+  opacity: 0.88;
+  white-space: nowrap;
+}
+.space-btn:hover { transform: translateY(-3px) scale(1.04); }
+
+/* ---------- MODAL ẢNH ---------- */
+.photo-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 1, 9, 0.62);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s;
+  padding: 24px;
+}
+.photo-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photo-modal-card {
+  text-align: center;
+  max-width: min(90vw, 560px);
+  transform: scale(0.7);
+  transition: transform 0.4s cubic-bezier(0.2, 1.3, 0.4, 1);
+}
+.photo-modal.open .photo-modal-card { transform: scale(1); }
+
+.photo-modal-img {
+  background: #fff;
+  padding: 12px 12px 48px;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.92),
+    0 0 28px rgba(255, 103, 158, 0.72),
+    0 0 70px rgba(255, 103, 158, 0.4);
+  display: inline-block;
+  max-width: 100%;
+}
+.photo-modal-img img {
+  display: block;
+  width: min(76vw, 460px);
+  max-height: 62vh;
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.photo-modal-msg {
+  margin: 16px auto 4px;
+  max-width: 420px;
+  color: #fff2f8;
+  font-weight: 700;
+  font-size: clamp(1.15rem, 4vw, 1.55rem);
+  font-family: "Dancing Script", cursive;
+  text-shadow:
+    0 0 10px rgba(255, 164, 202, 0.9),
+    0 0 24px rgba(255, 87, 145, 0.65);
+}
+
+.modal-close {
+  margin-top: 14px;
+  animation: none;
+}
+
+/* ============================ NÚT NHẠC ============================ */
+.music-toggle {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 20;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 14px rgba(255, 79, 139, 0.4);
+  transition: transform 0.2s ease;
+}
+.music-toggle:hover { transform: scale(1.1); }
+
+/* ============================ RESPONSIVE ============================ */
+@media (max-width: 480px) {
+  .paper { padding: 30px 18px 24px; }
+  .space-hint { bottom: 72px; }
+  .space-btn {
+    right: 12px;
+    bottom: 126px;
+    max-width: calc(100vw - 24px);
+  }
+}

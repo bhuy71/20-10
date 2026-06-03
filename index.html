@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gửi em yêu 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Nhạc nền: tự đổi theo nhóm cảnh (xem SCENE_TRACKS trong script.js) -->
+  <audio id="bgm" loop></audio>
+
+  <!-- Nền tim bay + lấp lánh -->
+  <div class="floating-hearts" id="hearts"></div>
+
+  <!-- ========================== CẢNH 0: MÀN MỞ ĐẦU (TẶNG NÈ) ========================== -->
+  <section class="scene active scene-intro" id="scene0">
+    <div class="scene-inner">
+      <h1 class="intro-title">Tặng Uyên nè</h1>
+      <button class="gift-card" data-next="scene1" aria-label="Chạm vào ảnh để mở quà">
+        <div class="gift-card-inner">
+          <!-- Dùng ảnh images/1.png. Nếu lỗi sẽ tự hiện thỏ SVG dự phòng -->
+          <img src="images/1.png" alt="quà tặng" class="gift-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <svg class="gift-bunny" style="display:none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- tai -->
+            <ellipse cx="84" cy="42" rx="11" ry="30" fill="#fff" stroke="#3a3a3a" stroke-width="3"/>
+            <ellipse cx="116" cy="42" rx="11" ry="30" fill="#fff" stroke="#3a3a3a" stroke-width="3"/>
+            <ellipse cx="84" cy="44" rx="5" ry="20" fill="#ffd1e3"/>
+            <ellipse cx="116" cy="44" rx="5" ry="20" fill="#ffd1e3"/>
+            <!-- đầu/thân -->
+            <path d="M62 96 q38 -34 76 0 q14 40 -8 72 q-30 22 -60 0 q-22 -32 -8 -72 z" fill="#fff" stroke="#3a3a3a" stroke-width="3"/>
+            <!-- má hồng -->
+            <circle cx="80" cy="118" r="9" fill="#ffb0cd"/>
+            <circle cx="120" cy="118" r="9" fill="#ffb0cd"/>
+            <!-- mắt -->
+            <circle cx="88" cy="108" r="4.2" fill="#3a3a3a"/>
+            <circle cx="112" cy="108" r="4.2" fill="#3a3a3a"/>
+            <!-- mũi/miệng -->
+            <path d="M97 116 q3 4 6 0" fill="none" stroke="#3a3a3a" stroke-width="2.4" stroke-linecap="round"/>
+            <!-- khăn quàng -->
+            <path d="M74 142 q26 16 52 0 l-6 12 q-20 12 -40 0 z" fill="#ffc2dd" stroke="#e98bb3" stroke-width="2"/>
+            <!-- hoa tay trái -->
+            <g transform="translate(54 150)">
+              <circle r="5" fill="#ff8fb6"/>
+              <circle cx="-9" cy="0" r="5" fill="#ffc2dd"/>
+              <circle cx="9" cy="0" r="5" fill="#ffc2dd"/>
+              <circle cx="0" cy="-9" r="5" fill="#ffc2dd"/>
+              <circle cx="0" cy="9" r="5" fill="#ffc2dd"/>
+              <circle r="3" fill="#fff3b0"/>
+            </g>
+            <!-- hoa tay phải -->
+            <g transform="translate(146 152)">
+              <circle r="5" fill="#b39ddb"/>
+              <circle cx="-9" cy="0" r="5" fill="#d6c6f0"/>
+              <circle cx="9" cy="0" r="5" fill="#d6c6f0"/>
+              <circle cx="0" cy="-9" r="5" fill="#d6c6f0"/>
+              <circle cx="0" cy="9" r="5" fill="#d6c6f0"/>
+              <circle r="3" fill="#fff3b0"/>
+            </g>
+          </svg>
+        </div>
+      </button>
+      <p class="intro-hint">Chạm vào ảnh 👆</p>
+    </div>
+  </section>
+
+  <!-- ========================== CẢNH 1: LỜI XIN LỖI ========================== -->
+  <section class="scene" id="scene1">
+    <div class="scene-inner">
+      <div class="cute-char">🥺</div>
+      <h1 class="title-script">Em ơi, em à...</h1>
+      <p class="msg msg-1">Anh xin lỗi vì đã làm em giận! 💔</p>
+      <p class="msg msg-2">Anh làm bản kiểm điểm rồi nè.<br />Em có muốn xem không? 🥺👉👈</p>
+      <button class="cute-btn" data-next="scene2">Em bấm vào đây nè 💕</button>
+    </div>
+  </section>
+
+  <!-- ========================== CẢNH 2: BẢN KIỂM ĐIỂM ========================== -->
+  <section class="scene" id="scene2">
+    <div class="scene-inner">
+      <div class="paper">
+        <div class="paper-tape"></div>
+        <div class="paper-deco deco-tl">🌸</div>
+        <div class="paper-deco deco-tr">🎀</div>
+        <div class="paper-deco deco-bl">💖</div>
+        <div class="paper-deco deco-br">🌷</div>
+
+        <div class="paper-national">
+          <p class="paper-national-name">Cộng hòa Xã hội Chủ nghĩa Việt Nam</p>
+          <p class="paper-national-motto">Độc lập - Tự do - Hạnh phúc</p>
+        </div>
+
+        <h2 class="paper-title">✨ BẢN KIỂM ĐIỂM ✨</h2>
+        <p class="paper-sub">Kính gửi: Nhà vua của anh 💗</p>
+
+        <div class="paper-body">
+          <p>Hôm nay anh tự kiểm điểm lại bản thân vì đã làm em giận. Anh nhận thấy mình đã sai và xin được nhận lỗi với em:</p>
+          <ul>
+            <li>🌼 Anh đã không để ý đến cảm xúc của em.</li>
+            <li>🌼 Anh đã hơi vô tâm và làm em buồn.</li>
+            <li>🌼 Anh hứa sẽ lắng nghe em nhiều hơn.</li>
+          </ul>
+          <p>Anh biết lỗi rồi. Mong em tha lỗi cho anh ạ. 💞</p>
+          <p class="paper-sign">Ký tên<br /><span>Bảo bối của em 🖊️</span></p>
+        </div>
+      </div>
+      <button class="cute-btn" data-next="scene3">Em bấm zô đây nè 🥹</button>
+    </div>
+  </section>
+
+  <!-- ========================== CẢNH 3: LỜI NHẮN ========================== -->
+  <section class="scene" id="scene3">
+    <div class="scene-inner">
+      <div class="cute-char">🐻💗</div>
+      <h1 class="title-script">Anh bít lỗi gòi...</h1>
+      <p class="msg">Em đừng giận anh nữa nha 🥺💕</p>
+      <div class="choice-wrap" id="choiceWrap">
+        <button class="cute-btn choice-yes" data-next="scene3b">Em đồng ý ạ 💕</button>
+        <button class="cute-btn choice-no" id="noBtn" type="button">Ko 😤</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== CẢNH 3B: TRÊU ĐÙA ========================== -->
+  <section class="scene" id="scene3b">
+    <div class="scene-inner">
+      <div class="cute-char">😝💗</div>
+      <h1 class="title-script">Anh bít ngay mà!</h1>
+      <p class="msg msg-1">Anh bít ngay em sẽ đồng ý mà 😎</p>
+      <p class="msg msg-2">Cảm ơn e nhìu nha 🥰💕</p>
+      <button class="cute-btn" data-next="scene4">Có thêm quà cho em nè 🎁✨</button>
+    </div>
+  </section>
+
+  <!-- ========================== CẢNH 4: VŨ TRỤ 3D ========================== -->
+  <section class="scene scene-space" id="scene4">
+    <!-- Canvas Three.js sẽ được gắn vào đây -->
+    <div class="galaxy-canvas" id="galaxyCanvas"></div>
+
+    <div class="space-caption">Anh làm suốt mấy tiếng lận á<span class="heart-beat">❤</span></div>
+    <p class="space-hint">Kéo để xoay · Cuộn (hoặc chụm 2 ngón) để phóng to · Bấm vào ảnh để xem 💞</p>
+
+    <!-- Modal hiện ảnh ở giữa kèm lời nhắn -->
+    <div class="photo-modal" id="photoModal">
+      <div class="photo-modal-card" id="photoModalCard">
+        <div class="photo-modal-img"><img id="modalImg" src="" alt="em yêu" /></div>
+        <p class="photo-modal-msg" id="modalMsg"></p>
+        <button class="cute-btn modal-close" id="modalClose">Đóng lại 💕</button>
+      </div>
+    </div>
+
+    <button class="cute-btn space-btn" id="restartBtn">Xem lại</button>
+  </section>
+
+  <!-- Nút bật/tắt nhạc -->
+  <button id="musicToggle" class="music-toggle" title="Bật/tắt nhạc">🔇</button>
+
+  <!-- Three.js cho cảnh vũ trụ 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
