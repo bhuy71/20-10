@@ -104,14 +104,20 @@ function burstHearts(origin) {
 // ============================ CẢNH VŨ TRỤ 3D (Three.js) ============================
 // ----- CHỈNH Ở ĐÂY -----
 const PHOTO_SOURCES = [
-  "images/10.jpg",
-  "images/11.jpg",
-  "images/12.jpg",
-  "images/13.jpg",
+  "images/10.jpeg",
+  "images/11.jpeg",
+  "images/12.jpeg",
+  "images/13.jpeg",
   "images/14.jpg",
-  "images/2.jpg",
-  "images/3.jpg",
-  "images/4.jpg",
+  "images/2.jpeg",
+  "images/3.jpeg",
+  "images/4.jpeg",
+  "images/5.jpeg",
+  "images/6.jpeg",
+  "images/7.jpg",
+  "images/8.jpeg",
+  "images/9.jpeg",
+  "images/15.jpg"
 ];
 const TILE_COUNT = 88;   // tổng số khung ảnh bay quanh hành tinh
 // Lời nhắn hiện khi bấm vào ảnh (chọn ngẫu nhiên). Em có thể thêm/sửa tùy thích.
@@ -119,7 +125,11 @@ const LOVE_NOTES = [
   "Ai mà xinh thíiii nhỉ",
   "Cute quá nè!",
   "Xinh xỉu lun á",
-  "Mờ ê meeeeee"
+  "Mờ ê meeeeee",
+  "Cua này xinh qué",
+  "Đẹp kém anh 1 xíu",
+  "wow wow wow, khét đấy nhể",
+  "Ngang hoa hậu"
 ];
 
 let galaxyInited = false;
